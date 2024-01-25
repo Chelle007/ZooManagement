@@ -10,13 +10,17 @@ public class Animal {
         this.areaNeeded = areaNeeded;
     }
     
-    // setters and getters
+    // getters
     public String getSpecies(){
         return species;
     }
 
     public int getAreaNeeded(){
         return areaNeeded;
+    }
+    
+    public Enclosure getEnclosure() {
+        return enclosure;
     }
     
     // method

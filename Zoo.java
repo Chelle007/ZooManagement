@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Zoo {
     private String name;
     private String description;
-    private ArrayList <Enclosure> enclosures;
+    private ArrayList<Enclosure> enclosures;
 
     // constructor
     public Zoo (String name, String description, ArrayList<Enclosure> enclosures)
@@ -14,16 +14,24 @@ public class Zoo {
     }
 
     // setters and getters
+    public void setName(String name)
+    {
+        this.name = name;
+    }
     public String getName()
     {
         return name;
     }
 
+    public void setDescription(String description)
+    {
+    	this.description = description;
+    }
     public String getDescription()
     {
         return description;
     }
-
+    
     public ArrayList<Enclosure> getEnclosures()
     {
         return enclosures;

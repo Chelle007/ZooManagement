@@ -30,7 +30,6 @@ public class Enclosure {
     public void setAnimals(ArrayList<Animal> animals) {
         this.animals = animals;
     }
-
     public ArrayList<Animal> getAnimals() {
         return animals;
     }
@@ -63,7 +62,7 @@ public class Enclosure {
     }
     
     public boolean addAnimal(Animal animal){
-        if ((getUtilisedArea() + animal.getAreaNeeded()) < getArea()) {
+        if ((getUtilisedArea() + animal.getAreaNeeded()) <= getArea()) {
             animals.add(animal);
             return true;
         }
