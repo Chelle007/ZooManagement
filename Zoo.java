@@ -5,7 +5,7 @@ public class Zoo {
     private String description;
     private ArrayList<Enclosure> enclosures;
 
-    // constructor
+    // Constructor
     public Zoo (String name, String description, ArrayList<Enclosure> enclosures)
     {
         this.name = name;
@@ -13,20 +13,12 @@ public class Zoo {
         this.enclosures = enclosures;
     }
 
-    // setters and getters
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+    // Getters
     public String getName()
     {
         return name;
     }
-
-    public void setDescription(String description)
-    {
-    	this.description = description;
-    }
+    
     public String getDescription()
     {
         return description;
@@ -37,7 +29,7 @@ public class Zoo {
         return enclosures;
     }
     
-    // methods
+    // Methods
     public int getTotalEnclosureArea() {
     	return 0;
     }

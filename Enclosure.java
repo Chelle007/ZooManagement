@@ -5,36 +5,27 @@ public class Enclosure {
     private int area;
     private ArrayList<Animal> animals;
 
-    // constructor
+    // Constructor
     public Enclosure(String name, int area, ArrayList<Animal> animals){
         this.name = name;
         this.area = area;
         this.animals = animals;
     }
 
-    // setters and getters
-    public void setName(String name) {
-        this.name = name;
-    }
+    // Getters
     public String getName(){
         return name;
     }
 
-    public void setArea(int area) {
-        this.area = area;
-    }
     public int getArea(){
         return area;
     }
 
-    public void setAnimals(ArrayList<Animal> animals) {
-        this.animals = animals;
-    }
     public ArrayList<Animal> getAnimals() {
         return animals;
     }
     
-    // methods
+    // Methods
     public int countAnimal(){
         return animals.size();
     }
@@ -52,13 +43,13 @@ public class Enclosure {
     }
     
     public int countSpecies(String type){
-        ArrayList<String> uniqueSpecies = new ArrayList<>();
+        int speciesCount = 0;
         for (Animal animal : animals) {
-            if (!uniqueSpecies.contains(animal.getSpecies())) {
-                uniqueSpecies.add(animal.getSpecies());
+            if (type.equals(animal.getSpecies())) {
+                speciesCount++;
             }
         }
-        return uniqueSpecies.size();
+        return speciesCount;
     }
     
     public boolean addAnimal(Animal animal){

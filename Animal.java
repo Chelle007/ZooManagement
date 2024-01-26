@@ -3,14 +3,14 @@ public class Animal {
     private Enclosure enclosure;
     private int areaNeeded;
     
-    // constructor
+    // Constructor
     public Animal(String species, Enclosure enclosure, int areaNeeded){
         this.species = species;
         this.enclosure = enclosure;
         this.areaNeeded = areaNeeded;
     }
     
-    // getters
+    // Getters
     public String getSpecies(){
         return species;
     }
@@ -23,14 +23,9 @@ public class Animal {
         return enclosure;
     }
     
-    // method
+    // Method
     public boolean hasCompanion() {
-        for (Animal animal : enclosure.getAnimals()) {
-            if (animal != this && animal.getSpecies().equals(species)) {
-                return true;
-            }
-        }
-        return false;
+        return enclosure.countSpecies(species)>1;
     }
     
 }
