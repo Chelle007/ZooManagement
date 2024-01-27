@@ -1,3 +1,4 @@
+package src;
 public class Animal {
 	private String species;
     private Enclosure enclosure;
