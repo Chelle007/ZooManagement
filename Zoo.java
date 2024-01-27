@@ -31,10 +31,15 @@ public class Zoo {
     
     // Methods
     public int getTotalEnclosureArea() {
-    	return 0;
+        int totalEnclosureArea = 0;
+        for (int i = 0; i < enclosures.size(); i++) {
+            totalEnclosureArea += enclosures.get(i).getArea();
+        }
+        return totalEnclosureArea;
     }
-    
-    public int countEnclosures() {
-    	return 0;
+
+    public int countEnclosures() 
+    {
+        return enclosures.size();
     }
 }
