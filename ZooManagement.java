@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -150,7 +149,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					System.out.printf("Utilised area: %d%n", choosenEnclosure.getUtilisedArea());
+					System.out.printf("%nUtilised area: %d%n", choosenEnclosure.getUtilisedArea());
 				}
 			}
 		}
@@ -166,7 +165,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					System.out.printf("Percentage of utilised area: %.2f%%n", choosenEnclosure.getUtilisedAreaPercentage());
+					System.out.printf("%nPercentage of utilised area: %.2f%%%n", choosenEnclosure.getUtilisedAreaPercentage());
 				}
 			}
 		}
@@ -184,7 +183,7 @@ public class ZooManagement {
 					
 					while (true) {
 						System.out.print("\nEnter animal species (Enter 0 to go back): ");
-						String animalSpecies = input.next();
+						String animalSpecies = input.nextLine();
 						
 						if (animalSpecies.equals("0")) {
 							System.out.println("Going back...");
@@ -196,10 +195,11 @@ public class ZooManagement {
 						else {
 							for (Animal animal : choosenEnclosure.getAnimals()) {
 								if (animal.getSpecies().equals(animalSpecies)) {
-									System.out.printf("Number of species: %.2f%%n", choosenEnclosure.countSpecies(animalSpecies));
+									System.out.printf("%nNumber of species: %d%n", choosenEnclosure.countSpecies(animalSpecies));
 									break;
 								}
 							}
+							break;
 						}
 					}
 				}
@@ -233,7 +233,10 @@ public class ZooManagement {
 				while (true) {
 					String[] answers = HelperMethods.enterDetails("Animal");
 					
-					if (answers[0].equals("0") || answers[1].equals("0")) System.out.println("Going back...");
+					if (answers[0].equals("0") || answers[1].equals("0")) {
+						System.out.println("Going back...");
+						break;
+					}
 					
 					else {
 						Animal newAnimal = new Animal(answers[0], choosenEnclosure, Integer.parseInt(answers[1]));
@@ -276,10 +279,9 @@ public class ZooManagement {
 				
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
-					
 					while (true) {
 						System.out.print("\nEnter animal species (Enter 0 to go back): ");
-						String animalSpecies = input.next();
+						String animalSpecies = input.nextLine();
 						
 						if (animalSpecies.equals("0")) {
 							System.out.println("Going back...");
@@ -297,6 +299,7 @@ public class ZooManagement {
 									break;
 								}
 							}
+							break;
 						}
 					}
 				}

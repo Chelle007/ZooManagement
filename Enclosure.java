@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Enclosure {
@@ -40,7 +39,7 @@ public class Enclosure {
     }
     
     public double getUtilisedAreaPercentage(){
-        return (double)getUtilisedArea()/getArea();
+        return (double)getUtilisedArea()/getArea()*100;
     }
     
     public int countSpecies(String type){

@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,7 +52,7 @@ public class HelperMethods {
 		
 		// First question
 		System.out.printf("%s: ", first);
-		answers[0] = input.next();
+		answers[0] = input.nextLine();
 		if (answers[0].equals("0")) return answers;
 		
 		// Second question
@@ -62,7 +61,7 @@ public class HelperMethods {
 		}
 		else {
 			System.out.printf("%s: ", second);
-			answers[1] = input.next();
+			answers[1] = input.nextLine();
 		}
 		
 		return answers;
@@ -82,6 +81,7 @@ public class HelperMethods {
 			
 			try {
 				int answer = input.nextInt();
+				input.nextLine();
 				
 				if (answer < start || answer > end) {
 					if (end == Integer.MAX_VALUE) System.out.println("Error. Please input number correctly.");
@@ -93,7 +93,7 @@ public class HelperMethods {
 			catch (Exception e) {
 				System.out.println("Error. Please input number correctly.");
 				input.reset();
-				input.next();
+				input.nextLine();
 			}
 		}
 	}	
