@@ -39,7 +39,7 @@ public class Enclosure {
     }
     
     public double getUtilisedAreaPercentage(){
-        return (double)getUtilisedArea()/getArea()*100;
+        return (double)getUtilisedArea()/getArea();
     }
     
     public int countSpecies(String type){

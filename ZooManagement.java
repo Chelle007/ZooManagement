@@ -165,7 +165,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					System.out.printf("%nPercentage of utilised area: %.2f%%%n", choosenEnclosure.getUtilisedAreaPercentage());
+					System.out.printf("%nPercentage of utilised area: %.2f%n", choosenEnclosure.getUtilisedAreaPercentage());
 				}
 			}
 		}
