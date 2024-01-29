@@ -228,25 +228,28 @@ public class ZooManagement {
 				
 				int enclosureChoice = HelperMethods.selectEnclosure(choosenZoo)-1;
 				
-				Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
-				
-				while (true) {
-					String[] answers = HelperMethods.enterDetails("Animal");
+				if (enclosureChoice != -1) {
+					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					if (answers[0].equals("0") || answers[1].equals("0")) {
-						System.out.println("Going back...");
-						break;
-					}
-					
-					else {
-						Animal newAnimal = new Animal(answers[0], choosenEnclosure, Integer.parseInt(answers[1]));
-						if (choosenEnclosure.addAnimal(newAnimal)) {
-							System.out.println("\nAnimal added successfully!");
+					while (true) {
+						String[] answers = HelperMethods.enterDetails("Animal");
+						
+						if (answers[0].equals("0") || answers[1].equals("0")) {
+							System.out.println("Going back...");
 							break;
 						}
-						else System.out.println("The needed area exceeds area in enclosure.");
+						
+						else {
+							Animal newAnimal = new Animal(answers[0], choosenEnclosure, Integer.parseInt(answers[1]));
+							if (choosenEnclosure.addAnimal(newAnimal)) {
+								System.out.println("\nAnimal added successfully!");
+								break;
+							}
+							else System.out.println("The needed area exceeds area in enclosure.");
+						}
 					}
 				}
+				
 			}
 		}
 		
