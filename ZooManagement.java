@@ -70,7 +70,7 @@ public class ZooManagement {
 			
 			if (zooChoice != -1) {
 				int totalArea = zoos.get(zooChoice).getTotalEnclosureArea();
-				HelperMethods.printColor(String.format("\nTotal area of all enclosures in the zoo: %d square units%n", totalArea), "green");
+				HelperMethods.printColor(String.format("\nTotal area of all enclosures in the zoo: %d square units", totalArea), "green");
 			}
 		}
 		
@@ -79,7 +79,7 @@ public class ZooManagement {
 			
 			if (zooChoice != -1) {
 				int totalEnclosure = zoos.get(zooChoice).countEnclosures();
-				HelperMethods.printColor(String.format("\nTotal number of enclosures in the zoo: %d%n", totalEnclosure), "green");
+				HelperMethods.printColor(String.format("\nTotal number of enclosures in the zoo: %d", totalEnclosure), "green");
 			}
 		}
 		
@@ -149,7 +149,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					HelperMethods.printColor(String.format("%nUtilised area: %d%n", choosenEnclosure.getUtilisedArea()), "green");
+					HelperMethods.printColor(String.format("%nUtilised area: %d", choosenEnclosure.getUtilisedArea()), "green");
 				}
 			}
 		}
@@ -165,7 +165,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					HelperMethods.printColor(String.format("%nPercentage of utilised area: %.2f%n", choosenEnclosure.getUtilisedAreaPercentage()), "green");
+					HelperMethods.printColor(String.format("%nPercentage of utilised area: %.2f", choosenEnclosure.getUtilisedAreaPercentage()), "green");
 				}
 			}
 		}
@@ -195,7 +195,7 @@ public class ZooManagement {
 						else {
 							for (Animal animal : choosenEnclosure.getAnimals()) {
 								if (animal.getSpecies().equals(animalSpecies)) {
-									HelperMethods.printColor(String.format("%nNumber of species: %d%n", choosenEnclosure.countSpecies(animalSpecies)), "green");
+									HelperMethods.printColor(String.format("%nNumber of species: %d", choosenEnclosure.countSpecies(animalSpecies)), "green");
 									break;
 								}
 							}

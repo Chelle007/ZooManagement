@@ -103,14 +103,14 @@ public class HelperMethods {
 				input.nextLine();
 				
 				if (answer < start || answer > end) {
-					if (end == Integer.MAX_VALUE) printColor("Error. Please input number correctly.\n", "red");
-					else printColor(String.format("Error. Please input number between %s and %s.%n", start, end), "red");
+					if (end == Integer.MAX_VALUE) printColor("Error. Please input number correctly.", "red");
+					else printColor(String.format("Error. Please input number between %s and %s.", start, end), "red");
 				}
 				
 				else return answer;
 			}
 			catch (Exception e) {
-				printColor("Error. Please input number correctly.\n", "red");
+				printColor("Error. Please input number correctly.", "red");
 				input.reset();
 				input.nextLine();
 			}
