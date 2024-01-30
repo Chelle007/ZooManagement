@@ -5,16 +5,17 @@ public class HelperMethods {
 	private static Scanner input = new Scanner(System.in);
 	private static ArrayList<Zoo> zoos = ZooManagement.getZoos();
 
+	
 	// ADDITIONAL METHODS
 
 	// Method to show zoo list and return the choice in integer
 	public static int selectZoo() {
 		
-		System.out.println("\nZoo list:");
+		printColor("\nZoo list:", "blue");
 		for (int i = 0; i<zoos.size(); i++) {
-			System.out.printf("%d. %s%n", i+1, zoos.get(i).getName());
+			printColor(String.format("%d. %s", i+1, zoos.get(i).getName()), "blue");
 		}
-		System.out.println("0. Go back");
+		printColor("0. Go back", "blue");
 
 		int zooChoice = checkInt("Enter your choice: ", 0, zoos.size());
 		
@@ -25,11 +26,11 @@ public class HelperMethods {
 	// Method to show enclosure list and return the choice in integer
 	public static int selectEnclosure(Zoo choosenZoo) {
 		
-		System.out.println("\nEnclosure list:");
+		printColor("\nEnclosure list:", "blue");
 		for (int i = 0; i<choosenZoo.getEnclosures().size(); i++) {
-			System.out.printf("%d. %s%n", i+1, choosenZoo.getEnclosures().get(i).getName());
+			printColor(String.format("%d. %s", i+1, choosenZoo.getEnclosures().get(i).getName()), "blue");
 		}
-		System.out.println("0. Go back");
+		printColor("0. Go back", "blue");
 		
 		int enclosureChoice = checkInt("Enter your choice: ", 0, choosenZoo.getEnclosures().size());
 		
@@ -67,6 +68,24 @@ public class HelperMethods {
 		return answers;
 	}
 	
+	
+	// CONSOLE INTERFACE METHODS
+	
+	public static void printColor(String output, String color) {
+		String ansi_color = "\u001B[0m";
+		String ansi_reset = "\u001B[0m";
+		
+		switch (color) {
+			case "red": ansi_color = "\u001B[31m"; break;
+			case "yellow": ansi_color = "\u001B[33m"; break;
+			case "green": ansi_color = "\u001B[32m"; break;
+			case "blue": ansi_color = "\u001B[34m"; break;
+		}
+		
+		System.out.println(ansi_color + output + ansi_reset);
+	}
+	
+	
 	// ERROR HANDLING METHODS
 	
 	// Method to check whether the input is integer
@@ -84,17 +103,17 @@ public class HelperMethods {
 				input.nextLine();
 				
 				if (answer < start || answer > end) {
-					if (end == Integer.MAX_VALUE) System.out.println("Error. Please input number correctly.");
-					else System.out.printf("Error. Please input number between %s and %s.%n", start, end);
+					if (end == Integer.MAX_VALUE) printColor("Error. Please input number correctly.\n", "red");
+					else printColor(String.format("Error. Please input number between %s and %s.%n", start, end), "red");
 				}
 				
 				else return answer;
 			}
 			catch (Exception e) {
-				System.out.println("Error. Please input number correctly.");
+				printColor("Error. Please input number correctly.\n", "red");
 				input.reset();
 				input.nextLine();
 			}
 		}
-	}	
+	}
 }

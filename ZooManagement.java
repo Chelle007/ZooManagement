@@ -47,12 +47,12 @@ public class ZooManagement {
 		if (choice == 1) {
 			String[] answers = HelperMethods.enterDetails("Zoo");
 			
-			if (answers[0].equals("0") || answers[1].equals("0")) System.out.println("Going back...");
+			if (answers[0].equals("0") || answers[1].equals("0")) HelperMethods.printColor("Going back...", "yellow");
 			
 			else {
 				Zoo newZoo = new Zoo(answers[0], answers[1], new ArrayList<Enclosure>());
 				zoos.add(newZoo);
-				System.out.println("\nZoo created successfully!");
+				HelperMethods.printColor("\nZoo created successfully!", "green");
 			}
 		}
 		
@@ -61,7 +61,7 @@ public class ZooManagement {
 			
 			if (zooChoice != -1) {
 				zoos.remove(zooChoice);
-				System.out.println("\nZoo deleted successfully!");
+				HelperMethods.printColor("\nZoo deleted successfully!", "green");
 			}
 		}
 		
@@ -70,7 +70,7 @@ public class ZooManagement {
 			
 			if (zooChoice != -1) {
 				int totalArea = zoos.get(zooChoice).getTotalEnclosureArea();
-				System.out.printf("\nTotal area of all enclosures in the zoo: %d square units%n", totalArea);
+				HelperMethods.printColor(String.format("\nTotal area of all enclosures in the zoo: %d square units%n", totalArea), "green");
 			}
 		}
 		
@@ -79,7 +79,7 @@ public class ZooManagement {
 			
 			if (zooChoice != -1) {
 				int totalEnclosure = zoos.get(zooChoice).countEnclosures();
-				System.out.printf("\nTotal number of enclosures in the zoo: %d%n", totalEnclosure);
+				HelperMethods.printColor(String.format("\nTotal number of enclosures in the zoo: %d%n", totalEnclosure), "green");
 			}
 		}
 		
@@ -107,7 +107,7 @@ public class ZooManagement {
 				
 				String[] answers = HelperMethods.enterDetails("Enclosure");
 				
-				if (answers[0].equals("0") || answers[1].equals("0")) System.out.println("Going back...");
+				if (answers[0].equals("0") || answers[1].equals("0")) HelperMethods.printColor("Going back...", "yellow");
 				
 				else {
 					Enclosure newEnclosure = new Enclosure(answers[0], Integer.parseInt(answers[1]), new ArrayList<Animal>());
@@ -115,7 +115,7 @@ public class ZooManagement {
 					ArrayList<Enclosure> Enclosures = choosenZoo.getEnclosures();
 					
 					Enclosures.add(newEnclosure);
-					System.out.println("\nEnclosure added successfully!");
+					HelperMethods.printColor("\nEnclosure added successfully!", "green");
 				}
 			}
 			
@@ -133,7 +133,7 @@ public class ZooManagement {
 					ArrayList<Enclosure> Enclosures = choosenZoo.getEnclosures();
 					
 					Enclosures.remove(enclosureChoice);
-					System.out.println("\nEnclosure deleted successfully!");
+					HelperMethods.printColor("\nEnclosure deleted successfully!", "green");
 				}
 			}
 		}
@@ -149,7 +149,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					System.out.printf("%nUtilised area: %d%n", choosenEnclosure.getUtilisedArea());
+					HelperMethods.printColor(String.format("%nUtilised area: %d%n", choosenEnclosure.getUtilisedArea()), "green");
 				}
 			}
 		}
@@ -165,7 +165,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					System.out.printf("%nPercentage of utilised area: %.2f%n", choosenEnclosure.getUtilisedAreaPercentage());
+					HelperMethods.printColor(String.format("%nPercentage of utilised area: %.2f%n", choosenEnclosure.getUtilisedAreaPercentage()), "green");
 				}
 			}
 		}
@@ -186,16 +186,16 @@ public class ZooManagement {
 						String animalSpecies = input.nextLine();
 						
 						if (animalSpecies.equals("0")) {
-							System.out.println("Going back...");
+							HelperMethods.printColor("Going back...", "yellow");
 							break;
 						}
 						
-						else if (choosenEnclosure.countSpecies(animalSpecies) == 0) System.out.println("\nSpecies not found.");
+						else if (choosenEnclosure.countSpecies(animalSpecies) == 0) HelperMethods.printColor("Species not found.", "red");
 						
 						else {
 							for (Animal animal : choosenEnclosure.getAnimals()) {
 								if (animal.getSpecies().equals(animalSpecies)) {
-									System.out.printf("%nNumber of species: %d%n", choosenEnclosure.countSpecies(animalSpecies));
+									HelperMethods.printColor(String.format("%nNumber of species: %d%n", choosenEnclosure.countSpecies(animalSpecies)), "green");
 									break;
 								}
 							}
@@ -235,17 +235,17 @@ public class ZooManagement {
 						String[] answers = HelperMethods.enterDetails("Animal");
 						
 						if (answers[0].equals("0") || answers[1].equals("0")) {
-							System.out.println("Going back...");
+							HelperMethods.printColor("Going back...", "yellow");
 							break;
 						}
 						
 						else {
 							Animal newAnimal = new Animal(answers[0], choosenEnclosure, Integer.parseInt(answers[1]));
 							if (choosenEnclosure.addAnimal(newAnimal)) {
-								System.out.println("\nAnimal added successfully!");
+								HelperMethods.printColor("\nAnimal added successfully!", "green");
 								break;
 							}
-							else System.out.println("The needed area exceeds area in enclosure.");
+							else HelperMethods.printColor("The needed area exceeds area in enclosure.", "red");
 						}
 					}
 				}
@@ -267,7 +267,7 @@ public class ZooManagement {
 					ArrayList<Animal> animals = choosenEnclosure.getAnimals();
 					
 					animals.clear();
-					System.out.println("\nAnimals removed successfully!");
+					HelperMethods.printColor("\nAnimals removed successfully!", "green");
 				}
 			}
 		}
@@ -287,17 +287,17 @@ public class ZooManagement {
 						String animalSpecies = input.nextLine();
 						
 						if (animalSpecies.equals("0")) {
-							System.out.println("Going back...");
+							HelperMethods.printColor("Going back...", "yellow");
 							break;
 						}
 						
-						else if (choosenEnclosure.countSpecies(animalSpecies) == 0) System.out.println("\nSpecies not found.");
+						else if (choosenEnclosure.countSpecies(animalSpecies) == 0) HelperMethods.printColor("Species not found.", "red");
 						
 						else {
 							for (Animal animal : choosenEnclosure.getAnimals()) {
 								if (animal.getSpecies().equals(animalSpecies)) {
-									if (animal.hasCompanion()) System.out.println("\nThis animal has companion.");
-									else System.out.println("\nThis animal does not have companion.");
+									if (animal.hasCompanion()) HelperMethods.printColor("\nThis animal has companion.", "green");
+									else HelperMethods.printColor("\nThis animal does not have companion.", "green");
 									
 									break;
 								}
