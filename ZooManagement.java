@@ -11,14 +11,14 @@ public class ZooManagement {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to the Zoo Management System!");
+		HelperMethods.printColor("Welcome to the Zoo Management System!", "bold");
 		
 		mainMenu(true);
 	}
 	
 	public static void mainMenu(boolean firstTime) {
 		if (!firstTime) System.out.println("\n======================================================");
-		System.out.println("\nZoo Management System");
+		HelperMethods.printColor("\nZoo Management System", "bold");
 		System.out.println("1. Manage Zoos");
 		System.out.println("2. Manage Enclosures");
 		System.out.println("3. Manage Animals");
@@ -30,12 +30,13 @@ public class ZooManagement {
 			case 1: manageZoos(); break;
 			case 2: manageEnclosures(); break;
 			case 3: manageAnimals(); break;
-			case 4: System.out.println("\nExiting Zoo Management System. Goodbye!"); break;
+			case 4: HelperMethods.printColor("\nExiting Zoo Management System. Goodbye!", "bold"); break;
 		}
 	}
 	
 	public static void manageZoos() {
-		System.out.println("\n======================================================\n\nZoo Management - Manage Zoos");
+		System.out.println("\n======================================================");
+		HelperMethods.printColor("\nZoo Management - Manage Zoos", "bold");
 		System.out.println("1. Create new Zoo");
 		System.out.println("2. Delete existing Zoo");
 		System.out.println("3. Calculate total area of all enclosures in the zoo");
@@ -89,7 +90,8 @@ public class ZooManagement {
 	}
 	
 	public static void manageEnclosures() {
-		System.out.println("\n======================================================\n\nZoo Management - Manage Enclosures");
+		System.out.println("\n======================================================\n");
+		HelperMethods.printColor("Zoo Management - Manage Enclosures", "bold");
 		System.out.println("1. Add an Enclosure to a Zoo");
 		System.out.println("2. Delete an existing Enclosure from a Zoo");
 		System.out.println("3. Get utilised area in a given enclosure");
@@ -212,7 +214,8 @@ public class ZooManagement {
 	}
 	
 	public static void manageAnimals() {
-		System.out.println("\n======================================================\n\nZoo Management - Manage Animals");
+		System.out.println("\n======================================================\n");
+		HelperMethods.printColor("Zoo Management - Manage Animals", "bold");
 		System.out.println("1. Add animals to an Enclosure");
 		System.out.println("2. Remove animals from an Enclosure");
 		System.out.println("3. Check if an animal has a companion in its enclosure");

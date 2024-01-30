@@ -11,7 +11,7 @@ public class HelperMethods {
 	// Method to show zoo list and return the choice in integer
 	public static int selectZoo() {
 		
-		printColor("\nZoo list:", "blue");
+		printColor("\nZoo list:", "blue bold");
 		for (int i = 0; i<zoos.size(); i++) {
 			printColor(String.format("%d. %s", i+1, zoos.get(i).getName()), "blue");
 		}
@@ -26,7 +26,7 @@ public class HelperMethods {
 	// Method to show enclosure list and return the choice in integer
 	public static int selectEnclosure(Zoo choosenZoo) {
 		
-		printColor("\nEnclosure list:", "blue");
+		printColor("\nEnclosure list:", "blue bold");
 		for (int i = 0; i<choosenZoo.getEnclosures().size(); i++) {
 			printColor(String.format("%d. %s", i+1, choosenZoo.getEnclosures().get(i).getName()), "blue");
 		}
@@ -80,6 +80,8 @@ public class HelperMethods {
 			case "yellow": ansi_color = "\u001B[33m"; break;
 			case "green": ansi_color = "\u001B[32m"; break;
 			case "blue": ansi_color = "\u001B[34m"; break;
+			case "bold": ansi_color = "\033[0;1m"; break;
+			case "blue bold": ansi_color = "\033[1;34m"; break;
 		}
 		
 		System.out.println(ansi_color + output + ansi_reset);
