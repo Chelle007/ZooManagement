@@ -11,11 +11,11 @@ public class HelperMethods {
 	// Method to show zoo list and return the choice in integer
 	public static int selectZoo() {
 		
-		printColor("\nZoo list:", "blue bold");
+		printlnColor("\nZoo list:", "blue bold");
 		for (int i = 0; i<zoos.size(); i++) {
-			printColor(String.format("%d. %s", i+1, zoos.get(i).getName()), "blue");
+			printlnColor(String.format("%d. %s", i+1, zoos.get(i).getName()), "blue");
 		}
-		printColor("0. Go back", "blue");
+		printlnColor("0. Go back", "blue");
 
 		int zooChoice = checkInt("Enter your choice: ", 0, zoos.size());
 		
@@ -26,11 +26,11 @@ public class HelperMethods {
 	// Method to show enclosure list and return the choice in integer
 	public static int selectEnclosure(Zoo choosenZoo) {
 		
-		printColor("\nEnclosure list:", "blue bold");
+		printlnColor("\nEnclosure list:", "blue bold");
 		for (int i = 0; i<choosenZoo.getEnclosures().size(); i++) {
-			printColor(String.format("%d. %s", i+1, choosenZoo.getEnclosures().get(i).getName()), "blue");
+			printlnColor(String.format("%d. %s", i+1, choosenZoo.getEnclosures().get(i).getName()), "blue");
 		}
-		printColor("0. Go back", "blue");
+		printlnColor("0. Go back", "blue");
 		
 		int enclosureChoice = checkInt("Enter your choice: ", 0, choosenZoo.getEnclosures().size());
 		
@@ -38,10 +38,15 @@ public class HelperMethods {
 		
 	}
 	
-	// Method to ask for details (name, description, area, etc) and return the answers
+	// Methods to ask for details (name, description, area, etc) and return the answers
 	public static String[] enterDetails(String type) {
+		return enterDetails(type, null);
+	}
+	
+	public static String[] enterDetails(String type, ArrayList<? extends ZooContainer> enclosures) {
 		// Opening
-		System.out.printf("%nEnter %s details: (Enter 0 to go back)%n", type);
+		printColor(String.format("%nEnter %s details:", type), "bold");
+		System.out.println(" (Enter 0 to go back)");
 		String first = "Name";
 		String second = "Area Needed";
 		String[] answers = new String[2];
@@ -52,8 +57,12 @@ public class HelperMethods {
 		else if (type.equals("Animal")) first = "Species";
 		
 		// First question
-		System.out.printf("%s: ", first);
-		answers[0] = input.nextLine();
+		if (type.equals("Zoo")) answers[0] = checkName(first + ": ", zoos);
+		else if (type.equals("Enclosure")) answers[0] = checkName(first + ": ", enclosures);
+		else {
+			System.out.printf("%s: ", first);
+			answers[0] = input.nextLine();
+		}
 		if (answers[0].equals("0")) return answers;
 		
 		// Second question
@@ -68,8 +77,10 @@ public class HelperMethods {
 		return answers;
 	}
 	
-	
 	// CONSOLE INTERFACE METHODS
+	public static void printlnColor(String output, String color) {
+		printColor(output + "\n", color);
+	}
 	
 	public static void printColor(String output, String color) {
 		String ansi_color = "\u001B[0m";
@@ -84,7 +95,7 @@ public class HelperMethods {
 			case "blue bold": ansi_color = "\033[1;34m"; break;
 		}
 		
-		System.out.println(ansi_color + output + ansi_reset);
+		System.out.print(ansi_color + output + ansi_reset);
 	}
 	
 	
@@ -105,17 +116,46 @@ public class HelperMethods {
 				input.nextLine();
 				
 				if (answer < start || answer > end) {
-					if (end == Integer.MAX_VALUE) printColor("Error. Please input number correctly.", "red");
-					else printColor(String.format("Error. Please input number between %s and %s.", start, end), "red");
+					if (end == Integer.MAX_VALUE) printlnColor("Error. Please input number correctly.", "red");
+					else printlnColor(String.format("Error. Please input number between %s and %s.", start, end), "red");
 				}
 				
 				else return answer;
 			}
 			catch (Exception e) {
-				printColor("Error. Please input number correctly.", "red");
+				printlnColor("Error. Please input number correctly.", "red");
 				input.reset();
 				input.nextLine();
 			}
 		}
+	}
+	
+	// Methods to check whether the name has been used
+	public static String checkName(String question, ArrayList<? extends ZooContainer> arrlist) {
+		String name = "";
+		boolean found = true;
+		
+		while (found) {
+			found = false;
+			
+			System.out.print(question);
+			name = input.nextLine();
+			
+			for (ZooContainer element : arrlist) {
+				if (element.getName().equals(name)) {
+					found = true;
+					break;
+				}
+			}
+			
+			if (found) printlnColor("Name has been taken, please input another name.", "red");
+			else break;
+		}
+		
+		return name;
+	}
+	
+	interface ZooContainer {
+	    String getName();
 	}
 }
