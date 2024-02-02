@@ -11,16 +11,29 @@ public class Animal {
     }
     
     // Getters
-    public String getSpecies(){
+    public String getSpecies() {
         return species;
     }
 
-    public int getAreaNeeded(){
+    public int getAreaNeeded() {
         return areaNeeded;
     }
     
     public Enclosure getEnclosure() {
         return enclosure;
+    }
+    
+    // Setters
+    public void setSpecies(String species) {
+    	this.species = species.toLowerCase();
+    }
+    
+    public void setAreaNeeded(int areaNeeded) {
+    	this.areaNeeded = areaNeeded;
+    }
+    
+    public void setEnclosure(Enclosure enclosure) {
+    	this.enclosure = enclosure;
     }
     
     // Method

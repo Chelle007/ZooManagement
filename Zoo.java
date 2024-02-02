@@ -1,33 +1,41 @@
-
 import java.util.ArrayList;
 
-public class Zoo {
+public class Zoo implements HelperMethods.ZooContainer {
     private String name;
     private String description;
     private ArrayList<Enclosure> enclosures;
 
     // Constructor
-    public Zoo (String name, String description, ArrayList<Enclosure> enclosures)
-    {
+    public Zoo (String name, String description, ArrayList<Enclosure> enclosures) {
         this.name = name;
         this.description = description;
         this.enclosures = enclosures;
     }
 
     // Getters
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
     
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
     
-    public ArrayList<Enclosure> getEnclosures()
-    {
+    public ArrayList<Enclosure> getEnclosures() {
         return enclosures;
+    }
+    
+    // Setters
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    public void setDescription(String description) {
+    	this.description = description;
+    }
+    
+    public void setEnclosures(ArrayList<Enclosure> enclosures) {
+    	this.enclosures = enclosures;
     }
     
     // Methods
@@ -39,8 +47,7 @@ public class Zoo {
         return totalEnclosureArea;
     }
 
-    public int countEnclosures() 
-    {
+    public int countEnclosures() {
         return enclosures.size();
     }
 }

@@ -13,11 +13,11 @@ public class Enclosure implements HelperMethods.ZooContainer {
     }
 
     // Getters
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getArea(){
+    public int getArea() {
         return area;
     }
 
@@ -25,12 +25,25 @@ public class Enclosure implements HelperMethods.ZooContainer {
         return animals;
     }
     
+    // Setters
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    public void setArea(int area) {
+    	this.area = area;
+    }
+    
+    public void setAnimals(ArrayList<Animal> animals) {
+    	this.animals = animals;
+    }
+    
     // Methods
-    public int countAnimal(){
+    public int countAnimal() {
         return animals.size();
     }
     
-    public int getUtilisedArea(){
+    public int getUtilisedArea() {
         int utilisedArea = 0;
         for(Animal animal : animals){
             utilisedArea = utilisedArea + animal.getAreaNeeded();
@@ -38,11 +51,11 @@ public class Enclosure implements HelperMethods.ZooContainer {
         return utilisedArea;
     }
     
-    public double getUtilisedAreaPercentage(){
+    public double getUtilisedAreaPercentage() {
         return (double)getUtilisedArea()/getArea();
     }
     
-    public int countSpecies(){
+    public int countSpecies() {
         ArrayList<String> uniqueSpecies = new ArrayList<>();
         for (Animal animal : animals){
             if (!uniqueSpecies.contains(animal.getSpecies()))
@@ -51,7 +64,7 @@ public class Enclosure implements HelperMethods.ZooContainer {
         return uniqueSpecies.size();
     }
     
-    public boolean addAnimal(Animal animal){
+    public boolean addAnimal(Animal animal) {
         if ((getUtilisedArea() + animal.getAreaNeeded()) <= getArea()) {
             animals.add(animal);
             return true;
