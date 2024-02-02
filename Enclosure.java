@@ -43,13 +43,12 @@ public class Enclosure {
     }
     
     public int countSpecies(String type){
-        int speciesCount = 0;
-        for (Animal animal : animals) {
-            if (type.equals(animal.getSpecies())) {
-                speciesCount++;
-            }
+        ArrayList<String> uniqueSpecies = new ArrayList<>();
+        for (Animal animal : animals){
+            if (!uniqueSpecies.contains(animal.getSpecies()))
+                uniqueSpecies.add(animal.getSpecies());
         }
-        return speciesCount;
+        return uniqueSpecies.size();
     }
     
     public boolean addAnimal(Animal animal){
