@@ -47,20 +47,19 @@ public class HelperMethods {
 		// Opening
 		printColor(String.format("%nEnter %s details:", type), "bold");
 		System.out.println(" (Enter 0 to go back)");
-		String first = "Name";
-		String second = "Area Needed";
+		String second = "error";
 		String[] answers = new String[2];
 		
 		// Set question
 		if (type.equals("Zoo")) second = "Description";
 		else if (type.equals("Enclosure")) second = "Area";
-		else if (type.equals("Animal")) first = "Species";
+		else if (type.equals("Animal")) second = "Area Needed";
 		
 		// First question
-		if (type.equals("Zoo")) answers[0] = checkName(first + ": ", zoos);
-		else if (type.equals("Enclosure")) answers[0] = checkName(first + ": ", enclosures);
+		if (type.equals("Zoo")) answers[0] = checkName("Name (case sensitive): ", zoos);
+		else if (type.equals("Enclosure")) answers[0] = checkName("Name (case sensitive): ", enclosures);
 		else {
-			System.out.printf("%s: ", first);
+			System.out.print("Species (case insensitive): ");
 			answers[0] = input.nextLine();
 		}
 		if (answers[0].equals("0")) return answers;
@@ -77,7 +76,7 @@ public class HelperMethods {
 		return answers;
 	}
 	
-	// CONSOLE INTERFACE METHODS
+	// Methods to print with color
 	public static void printlnColor(String output, String color) {
 		printColor(output + "\n", color);
 	}

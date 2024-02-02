@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Enclosure {
+public class Enclosure implements HelperMethods.ZooContainer {
     private String name;
     private int area;
     private ArrayList<Animal> animals;
@@ -42,14 +42,13 @@ public class Enclosure {
         return (double)getUtilisedArea()/getArea();
     }
     
-    public int countSpecies(String type){
-        int speciesCount = 0;
-        for (Animal animal : animals) {
-            if (type.equals(animal.getSpecies())) {
-                speciesCount++;
-            }
+    public int countSpecies(){
+        ArrayList<String> uniqueSpecies = new ArrayList<>();
+        for (Animal animal : animals){
+            if (!uniqueSpecies.contains(animal.getSpecies()))
+                uniqueSpecies.add(animal.getSpecies());
         }
-        return speciesCount;
+        return uniqueSpecies.size();
     }
     
     public boolean addAnimal(Animal animal){

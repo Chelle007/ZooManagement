@@ -167,7 +167,7 @@ public class ZooManagement {
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
 					
-					HelperMethods.printlnColor(String.format("%nPercentage of utilised area: %.2f", choosenEnclosure.getUtilisedAreaPercentage()), "green");
+					HelperMethods.printlnColor(String.format("%nPercentage of utilised area: %.2f%%", choosenEnclosure.getUtilisedAreaPercentage()*100), "green");
 				}
 			}
 		}
@@ -182,28 +182,8 @@ public class ZooManagement {
 				
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
-					
-					while (true) {
-						System.out.print("\nEnter animal species (Enter 0 to go back): ");
-						String animalSpecies = input.nextLine();
-						
-						if (animalSpecies.equals("0")) {
-							HelperMethods.printlnColor("Going back...", "yellow");
-							break;
-						}
-						
-						else if (choosenEnclosure.countSpecies(animalSpecies) == 0) HelperMethods.printlnColor("Species not found.", "red");
-						
-						else {
-							for (Animal animal : choosenEnclosure.getAnimals()) {
-								if (animal.getSpecies().equals(animalSpecies)) {
-									HelperMethods.printlnColor(String.format("%nNumber of species: %d", choosenEnclosure.countSpecies(animalSpecies)), "green");
-									break;
-								}
-							}
-							break;
-						}
-					}
+
+					HelperMethods.printlnColor(String.format("%nNumber of Unique Species: %d", choosenEnclosure.countSpecies()), "green");
 				}
 			}
 		}
@@ -285,28 +265,28 @@ public class ZooManagement {
 				
 				if (enclosureChoice != -1) {
 					Enclosure choosenEnclosure = choosenZoo.getEnclosures().get(enclosureChoice);
-					while (true) {
+					boolean found = false;
+					
+					while (!found) {
 						System.out.print("\nEnter animal species (Enter 0 to go back): ");
-						String animalSpecies = input.nextLine();
+						String animalSpecies = input.nextLine().toLowerCase();
 						
 						if (animalSpecies.equals("0")) {
 							HelperMethods.printlnColor("Going back...", "yellow");
 							break;
 						}
 						
-						else if (choosenEnclosure.countSpecies(animalSpecies) == 0) HelperMethods.printlnColor("Species not found.", "red");
-						
-						else {
-							for (Animal animal : choosenEnclosure.getAnimals()) {
-								if (animal.getSpecies().equals(animalSpecies)) {
-									if (animal.hasCompanion()) HelperMethods.printlnColor("\nThis animal has companion.", "green");
-									else HelperMethods.printlnColor("\nThis animal does not have companion.", "green");
-									
-									break;
-								}
+						for (Animal animal : choosenEnclosure.getAnimals()) {
+							if (animal.getSpecies().equals(animalSpecies)) {
+								if (animal.hasCompanion()) HelperMethods.printlnColor("\nThis animal has companion.", "green");
+								else HelperMethods.printlnColor("\nThis animal does not have companion.", "green");
+								found = true;
+								break;
 							}
-							break;
 						}
+						
+						if (found) break;
+						else HelperMethods.printlnColor("Species not found.", "red");
 					}
 				}
 			}

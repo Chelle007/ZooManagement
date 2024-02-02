@@ -1,4 +1,3 @@
-
 public class Animal {
 	private String species;
     private Enclosure enclosure;
@@ -6,7 +5,7 @@ public class Animal {
     
     // Constructor
     public Animal(String species, Enclosure enclosure, int areaNeeded){
-        this.species = species;
+        this.species = species.toLowerCase();
         this.enclosure = enclosure;
         this.areaNeeded = areaNeeded;
     }
@@ -26,7 +25,11 @@ public class Animal {
     
     // Method
     public boolean hasCompanion() {
-        return enclosure.countSpecies(species)>1;
+        for(Animal animal: enclosure.getAnimals()){
+            if(animal != this && animal.getSpecies().equals(species))
+                return true;
+        }
+        return false;
     }
     
 }
